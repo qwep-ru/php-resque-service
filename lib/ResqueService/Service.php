@@ -14,7 +14,10 @@ class Service
     public function __construct($config)
     {
         $this->service = getenv('SERVICE');
-        
+    }
+    
+    public function work()
+    {
         try {
             switch ($this->service) {
                 case SERVICE_NODE:

@@ -1,7 +1,23 @@
 {
   "name" : "php-resque-service",
   "repositories" : [ {
-    "type" : "composer",
-    "url" : "https://packagist.org/"
+    "type" : "git",
+    "url" : "https://github.com/scroller123/php-resque"
+  } ],
+  "autoload" : {
+    "psr-0" : {
+      "ResqueService" : "lib"
+    }
+  },
+  "require": {
+    "scroller123/php-resque": "dev-master"
+  },
+  "license" : "MIT",
+  "keywords" : [ "resque", "service" ],
+  "type" : "library",
+  "homepage" : "https://github.com/scroller123/php-resque-service/",
+  "authors" : [ {
+    "name" : "Dmitry Vyatkin",
+    "email" : "dmi.vyatkin@gmail.com"
   } ]
 }

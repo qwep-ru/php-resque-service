@@ -1,0 +1,7 @@
+{
+  "name" : "php-resque-service",
+  "repositories" : [ {
+    "type" : "composer",
+    "url" : "https://packagist.org/"
+  } ]
+}

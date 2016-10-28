@@ -7,13 +7,15 @@ namespace ResqueService;
  */
 class Service 
 {
-    private $service;
-    
     const SERVICE_NODE = 'node';
     
-    public function __construct($config)
+    private $service;
+    private $config;
+    
+    public function __construct($service = null, $config = null)
     {
-        $this->service = getenv('SERVICE');
+        $this->service = $service ? $service : getenv('SERVICE');
+        $this->config = $config;
     }
     
     public function work()

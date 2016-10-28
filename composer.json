@@ -1,13 +1,14 @@
 {
   "name" : "scroller123/php-resque-service",
+  "require": {
+    "php": ">=5.3.0",
+    "scroller123/php-resque": "dev-master",
+    "psr/log" : "1.0.0"
+  },
   "autoload" : {
     "psr-0" : {
       "ResqueService\\" : "lib/"
     }
-  },
-  "require": {
-    "php": ">=5.3.0",
-    "scroller123/php-resque": "dev-master"
   },
   "license" : "MIT",
   "keywords" : [ "resque", "service" ],

@@ -2,6 +2,7 @@
 
 namespace ResqueService;
 
+
 /**
  * Resque default logger PSR-3 compliant
  *
@@ -9,7 +10,7 @@ namespace ResqueService;
  * @author		Chris Boulton <chris@bigcommerce.com>
  * @license		http://www.opensource.org/licenses/mit-license.php
  */ 
-class Log extends Psr\Log\AbstractLogger 
+class Logger extends \Psr\Log\AbstractLogger 
 {
 	public $verbose;
 
@@ -35,7 +36,7 @@ class Log extends Psr\Log\AbstractLogger
 			return;
 		}
 
-		if (!($level === Psr\Log\LogLevel::INFO || $level === Psr\Log\LogLevel::DEBUG)) {
+		if (!($level === \Psr\Log\LogLevel::INFO || $level === \Psr\Log\LogLevel::DEBUG)) {
 			fwrite(
 				STDOUT,
 				'[' . $level . '] ' . $this->interpolate($message, $context) . PHP_EOL

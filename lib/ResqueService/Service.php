@@ -2,6 +2,7 @@
 
 namespace ResqueService;
 
+
 /**
  * @author Dmitry Vyatkin <dmi.vyatkin@gmail.com>
  */
@@ -22,7 +23,7 @@ class Service
     {
         try {
             switch ($this->service) {
-                case SERVICE_NODE:
+                case self::SERVICE_NODE:
                     $o = new \ResqueService\Services\NodeResqueDistributor;
                     $o->work();
                     break;

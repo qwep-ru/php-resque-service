@@ -7,6 +7,8 @@ namespace ResqueService\Services;
  */
 class NodeResqueDistributor extends ServiceAbstract
 {
+    const SLEEP_TIME = 60;
+    
     public function __construct()
     {
         parent::__construct();
@@ -28,7 +30,7 @@ class NodeResqueDistributor extends ServiceAbstract
             if ($this->child === 0 || $this->child === false || $this->child === -1) {
                 $status = 'Collector since ' . strftime('%F %T');
                 $this->updateProcLine($status);
-                $this->logger->log(Psr\Log\LogLevel::INFO, $status);
+                $this->logger->log(\Psr\Log\LogLevel::INFO, $status);
                 
                 if ($this->child === 0) {
                     exit(0);
@@ -39,7 +41,7 @@ class NodeResqueDistributor extends ServiceAbstract
                 // Parent process, sit and wait
                 $status = 'Forked default collector ' . $this->child . ' at ' . strftime('%F %T');
                 $this->updateProcLine($status);
-                $this->logger->log(Psr\Log\LogLevel::INFO, $status);
+                $this->logger->log(\Psr\Log\LogLevel::INFO, $status);
                  
                 // Wait until the child process finishes before continuing
                 if($this->child > 0) {
@@ -52,6 +54,8 @@ class NodeResqueDistributor extends ServiceAbstract
             }
              
             $this->child = null;
+            
+            usleep(self::SLEEP_TIME * 1000000);
         }
     }    
 }

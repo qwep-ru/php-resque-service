@@ -7,6 +7,7 @@ namespace ResqueService\Services;
  */
 abstract class ServiceAbstract
 {
+    
     /**
      * @var boolean True if on the next iteration, the worker should shutdown.
      */
@@ -40,7 +41,7 @@ abstract class ServiceAbstract
     
     public function __construct()
     {
-        $this->logger = new \ResqueService\Log;
+        $this->logger = new \ResqueService\Logger;
 
         if(function_exists('gethostname')) {
             $hostname = gethostname();
@@ -56,7 +57,7 @@ abstract class ServiceAbstract
     abstract public function work();
         
     
-    private function updateProcLine($status)
+    protected function updateProcLine($status)
     {
         $processTitle = 'resque-service-: ' . $status;
         if(function_exists('cli_set_process_title')) {
@@ -75,7 +76,7 @@ abstract class ServiceAbstract
      * QUIT: Shutdown after the current job finishes processing.
      * USR1: Kill the forked child immediately and continue processing jobs.
      */
-    private function registerSigHandlers()
+    protected function registerSigHandlers()
     {
         if(!function_exists('pcntl_signal')) {
             return;

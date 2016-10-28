@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9aa96c8d57cccfb15d923ca2da4f8e3b",
-    "content-hash": "01d0204759c185592ceeb06a20006cf3",
+    "hash": "23d2bc4bb5be5e3a1e174fe4b5e0b2bd",
+    "content-hash": "a78cfd0d1f7eba0e2e51e672dcc51875",
     "packages": [
         {
             "name": "colinmollenhour/credis",
@@ -139,8 +139,14 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/scroller123/php-resque",
-                "reference": "c8f3768b91e17541633e4ef5a98857db9d360373"
+                "url": "https://github.com/scroller123/php-resque.git",
+                "reference": "720815c8a276d66e0ceea0864689ce94a943f3e2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/scroller123/php-resque/zipball/720815c8a276d66e0ceea0864689ce94a943f3e2",
+                "reference": "720815c8a276d66e0ceea0864689ce94a943f3e2",
+                "shasum": ""
             },
             "require": {
                 "colinmollenhour/credis": "~1.2",
@@ -164,6 +170,7 @@
                     "Resque": "lib"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -181,7 +188,7 @@
                 "redis",
                 "resque"
             ],
-            "time": "2016-09-26 08:17:47"
+            "time": "2016-10-28 09:32:46"
         }
     ],
     "packages-dev": [],
@@ -193,8 +200,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.3.0",
-        "ext-pcntl": "*"
+        "php": ">=5.3.0"
     },
     "platform-dev": []
 }

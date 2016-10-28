@@ -1,5 +1,5 @@
 {
-  "name" : "php-resque-service",
+  "name" : "scroller123/php-resque-service",
   "repositories" : [ {
     "type" : "git",
     "url" : "https://github.com/scroller123/php-resque"

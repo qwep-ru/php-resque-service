@@ -10,6 +10,8 @@
     }
   },
   "require": {
+    "php": ">=5.3.0",
+	"ext-pcntl": "*",
     "scroller123/php-resque": "dev-master"
   },
   "license" : "MIT",

@@ -2,7 +2,7 @@
   "name" : "scroller123/php-resque-service",
   "autoload" : {
     "psr-0" : {
-      "ResqueService\\" : "lib"
+      "ResqueService\\" : "lib/"
     }
   },
   "require": {

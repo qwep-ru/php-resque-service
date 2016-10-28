@@ -1,9 +1,5 @@
 {
   "name" : "scroller123/php-resque-service",
-  "repositories" : [ {
-    "type" : "git",
-    "url" : "https://github.com/scroller123/php-resque"
-  } ],
   "autoload" : {
     "psr-0" : {
       "ResqueService" : "lib"
@@ -11,7 +7,6 @@
   },
   "require": {
     "php": ">=5.3.0",
-	"ext-pcntl": "*",
     "scroller123/php-resque": "dev-master"
   },
   "license" : "MIT",

@@ -11,18 +11,20 @@ class Service
     private $service;
     private $config;
     private $fork;
+    private $timeout;
     
-    public function __construct($service = null, $fork = true, $config = null)
+    public function __construct($service = null, $fork = true, $timeout = null, $config = null)
     {
         $this->service = $service ? $service : getenv('SERVICE');
         $this->fork = $fork;
         $this->config = $config;
+        $this->timeout = $timeout;
     }
     
     public function work()
     {
         try {
-            $o = new \ResqueService\Services\ServiceDistributor($this->service, $this->fork);
+            $o = new \ResqueService\Services\ServiceDistributor($this->service, $this->fork, $this->timeout);
             $o->work();
         } catch (\Exception $e) {
             echo $e->getMessage() . $e->getTraceAsString();

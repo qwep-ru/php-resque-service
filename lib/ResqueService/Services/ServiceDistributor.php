@@ -10,12 +10,14 @@ class ServiceDistributor extends ServiceAbstract
     const SLEEP_TIME = 60;
     private $serviceClass;
     private $fork;
+    private $timeout;
     
-    public function __construct($serviceClass = null, $fork = null)
+    public function __construct($serviceClass = null, $fork = null, $timeout = null)
     {
         parent::__construct();
         $this->serviceClass = $serviceClass;
         $this->fork = $fork;
+        $this->timeout = $timeout ? $timeout : self::SLEEP_TIME;
     }
     
     
@@ -69,7 +71,7 @@ class ServiceDistributor extends ServiceAbstract
              
             $this->child = null;
             
-            usleep(self::SLEEP_TIME * 1000000);
+            usleep($this->timeout * 1000000);
         }
     }    
 }

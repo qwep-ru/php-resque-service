@@ -8,26 +8,22 @@ namespace ResqueService;
  */
 class Service 
 {
-    const SERVICE_NODE = 'node';
-    
     private $service;
     private $config;
+    private $fork;
     
-    public function __construct($service = null, $config = null)
+    public function __construct($service = null, $fork = true, $config = null)
     {
         $this->service = $service ? $service : getenv('SERVICE');
+        $this->fork = $fork;
         $this->config = $config;
     }
     
     public function work()
     {
         try {
-            switch ($this->service) {
-                case self::SERVICE_NODE:
-                    $o = new \ResqueService\Services\NodeResqueDistributor;
-                    $o->work();
-                    break;
-            }
+            $o = new \ResqueService\Services\ServiceDistributor($this->service, $this->fork);
+            $o->work();
         } catch (\Exception $e) {
             echo $e->getMessage() . $e->getTraceAsString();
         }

@@ -7,7 +7,5 @@ date_default_timezone_set("UTC");
 require __DIR__ . '/../vendor/autoload.php';
 
 
-
-
-$service = new ResqueService\Service(ResqueService\Service::SERVICE_NODE);
+$service = new ResqueService\Service(ResqueService\NodeService::class, false);
 $service->work();

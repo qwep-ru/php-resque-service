@@ -5,13 +5,17 @@ namespace ResqueService\Services;
 /**
  * @author Dmitry Vyatkin <dmi.vyatkin@gmail.com>
  */
-class NodeResqueDistributor extends ServiceAbstract
+class ServiceDistributor extends ServiceAbstract
 {
     const SLEEP_TIME = 60;
+    private $serviceClass;
+    private $fork;
     
-    public function __construct()
+    public function __construct($serviceClass = null, $fork = null)
     {
         parent::__construct();
+        $this->serviceClass = $serviceClass;
+        $this->fork = $fork;
     }
     
     
@@ -26,11 +30,21 @@ class NodeResqueDistributor extends ServiceAbstract
                 break;
             }
             
-            $this->child = parent::fork();
+            $this->child = $this->fork ? parent::fork() : -1;
             if ($this->child === 0 || $this->child === false || $this->child === -1) {
-                $status = 'Collector since ' . strftime('%F %T');
+                $status = 'Service since ' . strftime('%F %T');
                 $this->updateProcLine($status);
                 $this->logger->log(\Psr\Log\LogLevel::INFO, $status);
+                
+                if ($this->serviceClass) {
+                    try {
+                        $o = new $this->serviceClass;
+                        $o->work();
+                    } catch (\Exception $e) {
+                        throw $e;
+                    }
+                }
+                                
                 
                 if ($this->child === 0) {
                     exit(0);

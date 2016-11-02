@@ -50,7 +50,7 @@ abstract class ServiceAbstract
             $hostname = php_uname('n');
         }
         $this->hostname = $hostname;
-        $this->id = $this->hostname . ':'.getmypid() . ':' . implode(',', $this->queues);
+        $this->id = $this->hostname . ':'.getmypid();
     }
     
     

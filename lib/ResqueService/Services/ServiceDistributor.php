@@ -11,13 +11,15 @@ class ServiceDistributor extends ServiceAbstract
     private $serviceClass;
     private $fork;
     private $timeout;
+    private $config;
     
-    public function __construct($serviceClass = null, $fork = null, $timeout = null)
+    public function __construct($serviceClass = null, $fork = null, $timeout = null, $config = null)
     {
         parent::__construct();
         $this->serviceClass = $serviceClass;
         $this->fork = $fork;
         $this->timeout = $timeout ? $timeout : self::SLEEP_TIME;
+        $this->config = $config;
     }
     
     
@@ -40,7 +42,7 @@ class ServiceDistributor extends ServiceAbstract
                 
                 if ($this->serviceClass) {
                     try {
-                        $o = new $this->serviceClass;
+                        $o = new $this->serviceClass($this->config);
                         $o->work();
                     } catch (\Exception $e) {
                         throw $e;

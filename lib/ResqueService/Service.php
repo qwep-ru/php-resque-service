@@ -24,7 +24,7 @@ class Service
     public function work()
     {
         try {
-            $o = new \ResqueService\Services\ServiceDistributor($this->service, $this->fork, $this->timeout);
+            $o = new \ResqueService\Services\ServiceDistributor($this->service, $this->fork, $this->timeout, $this->config);
             $o->work();
         } catch (\Exception $e) {
             echo $e->getMessage() . $e->getTraceAsString();

@@ -48,7 +48,6 @@ class ServiceDistributor extends ServiceAbstract
                         throw $e;
                     }
                 }
-                                
                 
                 if ($this->child === 0) {
                     exit(0);

@@ -2,6 +2,8 @@
 
 namespace ResqueService\Services;
 
+use \Psr\Log\LogLevel;
+
 /**
  * @author Dmitry Vyatkin <dmi.vyatkin@gmail.com>
  */
@@ -89,7 +91,7 @@ abstract class ServiceAbstract
         pcntl_signal(SIGUSR1, array($this, 'killChild'));
         pcntl_signal(SIGUSR2, array($this, 'pauseProcessing'));
         pcntl_signal(SIGCONT, array($this, 'unPauseProcessing'));
-        $this->logger->log(Psr\Log\LogLevel::DEBUG, 'Registered signals');
+        $this->logger->log(LogLevel::DEBUG, 'Registered signals');
     }
     
     /**
@@ -99,7 +101,7 @@ abstract class ServiceAbstract
     public function shutdown()
     {
         $this->shutdown = true;
-        $this->logger->log(Psr\Log\LogLevel::NOTICE, 'Shutting down');
+        $this->logger->log(LogLevel::NOTICE, 'Shutting down');
     }
     
     /**
@@ -119,18 +121,18 @@ abstract class ServiceAbstract
     public function killChild()
     {
         if(!$this->child) {
-            $this->logger->log(Psr\Log\LogLevel::DEBUG, 'No child to kill.');
+            $this->logger->log(LogLevel::DEBUG, 'No child to kill.');
             return;
         }
     
-        $this->logger->log(Psr\Log\LogLevel::INFO, 'Killing child at {child}', array('child' => $this->child));
+        $this->logger->log(LogLevel::INFO, 'Killing child at {child}', array('child' => $this->child));
         if(exec('ps -o pid,state -p ' . $this->child, $output, $returnCode) && $returnCode != 1) {
-            $this->logger->log(Psr\Log\LogLevel::DEBUG, 'Child {child} found, killing.', array('child' => $this->child));
+            $this->logger->log(LogLevel::DEBUG, 'Child {child} found, killing.', array('child' => $this->child));
             posix_kill($this->child, SIGKILL);
             $this->child = null;
         }
         else {
-            $this->logger->log(Psr\Log\LogLevel::INFO, 'Child {child} not found, restarting.', array('child' => $this->child));
+            $this->logger->log(LogLevel::INFO, 'Child {child} not found, restarting.', array('child' => $this->child));
             $this->shutdown();
         }
     }
@@ -140,7 +142,7 @@ abstract class ServiceAbstract
      */
     public function pauseProcessing()
     {
-        $this->logger->log(Psr\Log\LogLevel::NOTICE, 'USR2 received; pausing job processing');
+        $this->logger->log(LogLevel::NOTICE, 'USR2 received; pausing job processing');
         $this->paused = true;
     }
     
@@ -150,7 +152,7 @@ abstract class ServiceAbstract
      */
     public function unPauseProcessing()
     {
-        $this->logger->log(Psr\Log\LogLevel::NOTICE, 'CONT received; resuming job processing');
+        $this->logger->log(LogLevel::NOTICE, 'CONT received; resuming job processing');
         $this->paused = false;
     }
     

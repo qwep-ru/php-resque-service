@@ -8,7 +8,7 @@ namespace ResqueService\Services;
 class ServiceDistributor extends ServiceAbstract
 {
     const SLEEP_TIME = 60;
-    private $serviceClass;
+    protected  $serviceClass;
     private $fork;
     private $timeout;
     private $config;

@@ -43,8 +43,8 @@ abstract class ServiceAbstract
     
     public function __construct()
     {
-        $this->logger = new \ResqueService\Logger;
-
+        $this->logger = new \ResqueService\Logger(true);
+        
         if(function_exists('gethostname')) {
             $hostname = gethostname();
         }

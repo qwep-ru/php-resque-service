@@ -17,7 +17,7 @@ class Logger extends AbstractLogger
 {
 	public $verbose;
 
-	public function __construct($verbose = false) {
+	public function __construct($verbose = true) {
 		$this->verbose = $verbose;
 	}
 

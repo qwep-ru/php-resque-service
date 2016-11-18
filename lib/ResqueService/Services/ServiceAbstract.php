@@ -61,7 +61,7 @@ abstract class ServiceAbstract
     
     protected function updateProcLine($status)
     {
-        $processTitle = 'resque-service-: ' . $status;
+        $processTitle = 'resque-' . $this->id . '-' . $this->serviceClass .': ' . $status;
         if(function_exists('cli_set_process_title')) {
             cli_set_process_title($processTitle);
         }

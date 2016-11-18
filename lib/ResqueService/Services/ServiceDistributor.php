@@ -22,10 +22,9 @@ class ServiceDistributor extends ServiceAbstract
         $this->config = $config;
     }
     
-    
     public function work()
     {
-        $this->updateProcLine('Starting');
+        $this->updateProcLine('Starting'); 
         $this->registerSigHandlers();
         $this->pruneDeadWorkers();
         

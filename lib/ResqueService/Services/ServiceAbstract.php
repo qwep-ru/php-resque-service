@@ -13,32 +13,32 @@ abstract class ServiceAbstract
     /**
      * @var boolean True if on the next iteration, the worker should shutdown.
      */
-    protected  $shutdown = false;
+    public  $shutdown = false;
     
     /**
      * @var string The hostname of this worker.
      */
-    protected $hostname;
+    public $hostname;
     
     /**
      * @var LoggerInterface Logging object that impliments the PSR-3 LoggerInterface
      */
-    protected $logger;
+    public $logger;
     
     /**
      * @var boolean True if this worker is paused.
      */
-    protected $paused = false;
+    public $paused = false;
     
     /**
      * @var string String identifying this worker.
      */
-    protected $id;
+    public $id;
     
     /**
      * @var int Process ID of child worker processes.
      */
-    protected $child = null;
+    public $child = null;
     
     
     public function __construct()

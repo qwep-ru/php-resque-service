@@ -178,7 +178,7 @@ abstract class ServiceAbstract
     public function workerPids()
     {
         $pids = array();
-        exec('ps -A -o pid,command | grep [r]esque', $cmdOutput);
+        exec('ps -A -o pid,command | grep [r]esque-ix', $cmdOutput);
         foreach($cmdOutput as $line) {
             list($pids[],) = explode(' ', trim($line), 2);
         }

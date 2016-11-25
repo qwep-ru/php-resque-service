@@ -30,6 +30,7 @@ class ServiceDistributor extends ServiceAbstract
         
         while(true) {
             if($this->shutdown) {
+                $this->logger->log(\Psr\Log\LogLevel::INFO, $this->id . ' shutdown');
                 break;
             }
             
@@ -55,7 +56,7 @@ class ServiceDistributor extends ServiceAbstract
              
             if($this->child > 0 || $this->child === -1) {
                 // Parent process, sit and wait
-                $status = 'Forked default collector ' . $this->child . ' at ' . strftime('%F %T');
+                $status = 'Forked thread ' . $this->child . ' at ' . strftime('%F %T');
                 $this->updateProcLine($status);
                 $this->logger->log(\Psr\Log\LogLevel::INFO, $status);
                  
@@ -73,5 +74,8 @@ class ServiceDistributor extends ServiceAbstract
             
             usleep($this->timeout * 1000000);
         }
+        
+        $this->logger->log(\Psr\Log\LogLevel::INFO, $this->id . ' Exit');
+        
     }    
 }

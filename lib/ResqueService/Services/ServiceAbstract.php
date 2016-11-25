@@ -112,6 +112,8 @@ abstract class ServiceAbstract
     {
         $this->shutdown();
         $this->killChild();
+        $this->logger->log(LogLevel::NOTICE, getmypid() . ' exit');
+        exit(0);
     }
     
     /**

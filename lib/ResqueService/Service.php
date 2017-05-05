@@ -26,7 +26,7 @@ class Service
     {
         try {
             if ($this->workers > 1) {
-                for($i = 0; $i < $this->workers; ++$i) {
+                for($i = 1; $i < $this->workers; ++$i) {
                     $pid = pcntl_fork();
                     if($pid == -1) {
                         die("Could not fork worker ".$i."\n");
@@ -35,9 +35,14 @@ class Service
                     else if(!$pid) {
                         $o = new \ResqueService\Services\ServiceDistributor($this->service, $this->fork, $this->timeout, $this->config);
                         $o->work();
+                        exit();
                         break;
                     }
                 }
+
+                $o = new \ResqueService\Services\ServiceDistributor($this->service, $this->fork, $this->timeout, $this->config);
+                $o->work();
+
             } else {
                 $o = new \ResqueService\Services\ServiceDistributor($this->service, $this->fork, $this->timeout, $this->config);
                 $o->work();

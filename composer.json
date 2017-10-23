@@ -1,8 +1,8 @@
 {
-  "name" : "scroller123/php-resque-service",
+  "name" : "narrator69/php-resque-service",
   "require": {
     "php": ">=5.3.0",
-    "scroller123/php-resque": "dev-master",
+    "narrator69/php-resque": "dev-master",
     "psr/log" : "1.0.0"
   },
   "autoload" : {
@@ -13,9 +13,8 @@
   "license" : "MIT",
   "keywords" : [ "resque", "service" ],
   "type" : "library",
-  "homepage" : "https://github.com/scroller123/php-resque-service/",
+  "homepage" : "https://github.com/narrator69/php-resque-service/",
   "authors" : [ {
-    "name" : "Dmitry Vyatkin",
-    "email" : "dmi.vyatkin@gmail.com"
+    "name" : "Narrator69"
   } ]
 }

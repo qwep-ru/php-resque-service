@@ -1,8 +1,8 @@
 {
-  "name" : "narrator69/php-resque-service",
+  "name" : "qwep-ru/php-resque-service",
   "require": {
     "php": ">=5.3.0",
-    "narrator69/php-resque": "dev-master",
+    "qwep-ru/php-resque": "dev-master",
     "psr/log" : "1.0.0"
   },
   "autoload" : {
@@ -13,8 +13,5 @@
   "license" : "MIT",
   "keywords" : [ "resque", "service" ],
   "type" : "library",
-  "homepage" : "https://github.com/narrator69/php-resque-service/",
-  "authors" : [ {
-    "name" : "Narrator69"
-  } ]
+  "homepage" : "https://github.com/qwep-ru/php-resque-service/"
 }

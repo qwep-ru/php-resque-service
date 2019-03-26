@@ -2,7 +2,7 @@
   "name" : "qwep-ru/php-resque-service",
   "require": {
     "php": ">=5.3.0",
-    "qwep-ru/php-resque": "dev-master",
+    "qwep-ru/php-resque": "dev-basic",
     "psr/log" : "1.0.0"
   },
   "autoload" : {
